@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title%}
+  Home
+{% endblock %}
+
+{% block content %}
+<h1 class="center"><b>Welcome to Quiz   </b></h1>
+<br /></br>
+<h2>
+    Choose any category to begin with 
+</h2>
+<br /></br>
+
+{% for choice in choices %}
+<div class="row">
+    <div class="col-md-4">
+        <a href="/quiz/{{ choice.0 }}"><h3>{{ choice.1 }}</h3></a>
+    </div>
+
+</div>
+  {% endfor %}
+{% endblock %}
