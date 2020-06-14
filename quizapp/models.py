@@ -13,10 +13,10 @@ class Questions(models.Model):
     optionc = models.CharField(max_length = 100)
     optiond = models.CharField(max_length = 100)
     answer = models.CharField(max_length = 100)
-    catagory = models.CharField(max_length=20, choices = CAT_CHOICES)
+    category = models.CharField(max_length=20, choices = CAT_CHOICES)
 
     class Meta:
-        ordering = ('-catagory',)
+        ordering = ('-category',)
 
     def __str__(self):
         return self.question
