@@ -1,6 +1,21 @@
 from django.db import models
 
 # Create your models here.
+class Quiz(models.Model):
+    
+    category=models.CharField(max_length = 250,null=True, blank=True)
+    description=models.CharField(max_length = 250,null=True ,blank=True)
+    def __str__(self):
+        return self.category
+     
+     
+
+class QuizTakers(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    user = models.CharField(max_length = 250)
+    score= models.CharField(max_length = 250)
+    def __str__(self):
+        return self.user
 
 class Questions(models.Model):
     CAT_CHOICES = (
@@ -9,6 +24,8 @@ class Questions(models.Model):
     ('maths','Maths'),
     ('generalknowledge','GeneralKnowledge')
     )
+    quiz = models.ForeignKey(Quiz,on_delete=models.CASCADE)
+     
     question = models.CharField(max_length = 250)
     optiona = models.CharField(max_length = 100)
     optionb = models.CharField(max_length = 100)
