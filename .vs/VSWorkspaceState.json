@@ -4,11 +4,9 @@
     "\\quiz",
     "\\quizapp",
     "\\quizapp\\migrations",
-    "\\quizapp\\templates",
     "\\quizapp\\templates\\quiz",
-    "\\quizapp\\__pycache__",
-    "\\quiz\\__pycache__"
+    "\\quizapp\\__pycache__"
   ],
-  "SelectedNode": "\\quizapp\\templates\\quiz\\result.html",
+  "SelectedNode": "\\quizapp\\models.py",
   "PreviewInSolutionExplorer": false
 }
