@@ -3,22 +3,18 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Quiz(models.Model):
-    
-    category=models.CharField(max_length = 250)
+    category =models.CharField(max_length = 250)
     description=models.CharField(max_length = 250)
-    
-
     def __str__(self):
         return self.category
-    
-     
 
 class QuizTakers(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    score= models.CharField(max_length = 250)
+    
+    score= models.IntegerField(default=0)
     def __str__(self):
-        return self.user
+        return str(self.user)    
 
 class Questions(models.Model):
     CAT_CHOICES = (
@@ -39,6 +35,27 @@ class Questions(models.Model):
 
     class Meta:
         ordering = ('-catagory',)
-
     def __str__(self):
         return self.question
+
+class UserTracker(models.Model):
+        questions = models.ForeignKey(Questions,on_delete=models.CASCADE)
+        quiztakers = models.ForeignKey(QuizTakers,on_delete=models.CASCADE)
+        user_answer= models.CharField(max_length = 250)
+        correct_orincorrect = models.CharField(max_length = 100)
+        def __str__(self):
+            return self.user_answer
+
+
+
+    
+    
+    
+     
+
+
+        
+
+
+
+

@@ -4,9 +4,9 @@
     "\\quiz",
     "\\quizapp",
     "\\quizapp\\migrations",
-    "\\quizapp\\templates\\quiz",
-    "\\quizapp\\__pycache__"
+    "\\quizapp\\templates",
+    "\\quizapp\\templates\\quiz"
   ],
-  "SelectedNode": "\\quizapp\\models.py",
+  "SelectedNode": "\\db.sqlite3",
   "PreviewInSolutionExplorer": false
 }

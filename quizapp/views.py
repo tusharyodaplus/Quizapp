@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Questions
+from .models import Questions,UserTracker
 
 # Create your views here.
 def home(request):
@@ -20,6 +20,9 @@ def result(request):
         qid = []
         qans = []
         ans = []
+        ans1 = []
+        dummy='Correct'
+        dummy1='InCorrect'
         score = 0
         for key in datas:
             try:
@@ -29,12 +32,21 @@ def result(request):
                 print("Csrf")
         for q in qid:
             ans.append((Questions.objects.get(id = q)).answer)
+            ans1.append((UserTracker.objects.get(id = q)).user_answer)
+            print (ans1)
+            print(ans)
+            if ans == ans1 :
+                print(dummy)
+            else:
+                print(dummy1)
+
         total = len(ans)
         for i in range(total):
-            if ans[i] == qans[i]:
-                score += 1
-       
-        print(score)
+            
+            if ans[i] == ans1[i]:
+                score+=1
+            
+        
         return render(request, 'quiz/result.html',{'score':score,'total':total})
 
 def about(request):
