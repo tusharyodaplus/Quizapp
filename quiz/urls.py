@@ -14,11 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
+from quizapp.views import user_login,user_logout,success
+from django.urls import path
 from django.contrib import admin
 from django.views.generic import RedirectView
 
 urlpatterns = [
+    path('login/', user_login, name="user_login"),
+    path('success/', success, name="user_success"),
+    path('logout/', user_logout, name="user_logout"),
     url(r'^$', include('quizapp.urls')),
+    url(r'^home/', include('quizapp.urls')),
+
     url(r'^quiz/', include('quizapp.urls')),
     url(r'^admin/', admin.site.urls),
 ]

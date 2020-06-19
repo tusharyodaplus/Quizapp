@@ -7,6 +7,6 @@
     "\\quizapp\\templates",
     "\\quizapp\\templates\\quiz"
   ],
-  "SelectedNode": "\\db.sqlite3",
+  "SelectedNode": "\\quizapp\\views.py",
   "PreviewInSolutionExplorer": false
 }
