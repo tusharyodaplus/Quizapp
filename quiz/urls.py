@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('login/', user_login, name="user_login"),
+    path('', user_login, name="user_login"),
     path('success/', success, name="user_success"),
     path('logout/', user_logout, name="user_logout"),
     url(r'^$', include('quizapp.urls')),
