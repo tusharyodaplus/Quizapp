@@ -2,10 +2,25 @@ from django.shortcuts import render,redirect
 from django.contrib.sessions.models import Session
 from django.urls import reverse
 from django.http import HttpResponseRedirect 
-from .models import Questions,UserTracker,account_data
+from .models import Questions,UserTracker,account_data,QuizTakers,Quiz
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import viewsets
+from .serializers import quizSerializer
+
+class quizList(APIView):
+    def get(self,request):
+        quiz1=Quiz.objects.all()
+        serializer= quizSerializer(quiz1,data=request.data, many=True)
+        serializer.is_valid()
+        return Response(serializer.data)
+
+    def post(self):
+        pass
 
 def user_login(request):
     context = {}

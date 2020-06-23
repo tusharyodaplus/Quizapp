@@ -18,6 +18,8 @@ from quizapp.views import user_login,user_logout,success
 from django.urls import path
 from django.contrib import admin
 from django.views.generic import RedirectView
+from rest_framework.urlpatterns import format_suffix_patterns
+from quizapp import views
 
 urlpatterns = [
     path('', user_login, name="user_login"),
@@ -25,7 +27,7 @@ urlpatterns = [
     path('logout/', user_logout, name="user_logout"),
     url(r'^$', include('quizapp.urls')),
     url(r'^home/', include('quizapp.urls')),
-
+    url(r'^quizlovers/', views.quizList.as_view()),
     url(r'^quiz/', include('quizapp.urls')),
     url(r'^admin/', admin.site.urls),
 ]
