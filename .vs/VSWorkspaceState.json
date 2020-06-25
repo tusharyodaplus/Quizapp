@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\quiz",
-    "\\quizapp"
+    "\\quizapp",
+    "\\quizapp\\templates",
+    "\\quizapp\\templates\\quiz"
   ],
-  "SelectedNode": "\\quizapp\\views.py",
+  "SelectedNode": "\\quizapp\\templates\\quiz\\home.html",
   "PreviewInSolutionExplorer": false
 }

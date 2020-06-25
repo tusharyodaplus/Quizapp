@@ -3,9 +3,11 @@ from django.contrib.sessions.models import Session
 from django.urls import reverse
 from django.http import HttpResponseRedirect 
 from .models import Questions,UserTracker,account_data,QuizTakers,Quiz
+#for login and logout feature
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+#for rest_framework
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -85,14 +87,15 @@ def result(request):
         for q in qid:
             ans.append((Questions.objects.get(id = q)).answer)
             print(ans)
-            total = len(ans)
-            for i in range(total):
+        total = len(ans)
+        for i in range(total):
+            if ans[i] == qans[i]:
+                score+=1
+        print(score) 
             
-                   if ans[i] == qans[i]:
-                      score+=1
-                      print(score)      
-        
-        return render(request, 'quiz/result.html',{'score':score,'total':total})
+                   
+                      
+    return render(request, 'quiz/result.html',{'score':score,'total':total})
 
 
 
