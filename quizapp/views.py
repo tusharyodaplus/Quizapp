@@ -17,8 +17,8 @@ from .serializers import quizSerializer
 class quizList(APIView):
     def get(self,request):
         quiz1=Quiz.objects.all()
-        serializer= quizSerializer(quiz1,data=request.data, many=True)
-        serializer.is_valid()
+        serializer= quizSerializer(quiz1, many=True)
+        
         return Response(serializer.data)
 
     def post(self):

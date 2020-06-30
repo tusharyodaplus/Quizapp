@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
+
 
 # Create your models here.
 class Quiz(models.Model):
@@ -49,7 +51,7 @@ class UserTracker(models.Model):
 
 
 class account_data(models.Model):
-    quiztakers = models.ForeignKey(QuizTakers,on_delete=models.CASCADE)
+    quiztakers = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     questions = models.ForeignKey(Questions,on_delete=models.CASCADE)
     
     key = models.CharField(max_length=30)

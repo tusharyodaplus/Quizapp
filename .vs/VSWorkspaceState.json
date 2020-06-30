@@ -6,6 +6,6 @@
     "\\quizapp\\templates",
     "\\quizapp\\templates\\quiz"
   ],
-  "SelectedNode": "\\quizapp\\templates\\quiz\\home.html",
+  "SelectedNode": "\\quizapp\\serializers.py",
   "PreviewInSolutionExplorer": false
 }
