@@ -3,9 +3,8 @@
     "",
     "\\quiz",
     "\\quizapp",
-    "\\quizapp\\templates",
-    "\\quizapp\\templates\\quiz"
+    "\\quizapp\\templates"
   ],
-  "SelectedNode": "\\quizapp\\serializers.py",
+  "SelectedNode": "\\quizapp\\models.py",
   "PreviewInSolutionExplorer": false
 }

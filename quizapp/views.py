@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.sessions.models import Session
 from django.urls import reverse
 from django.http import HttpResponseRedirect 
-from .models import Questions,UserTracker,account_data,QuizTakers,Quiz
+from .models import Question,UserTracker,AccountData,QuizTaker,Quiz
 #for login and logout feature
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -13,6 +13,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
 from .serializers import quizSerializer
+
+
+
 
 class quizList(APIView):
     def get(self,request):
@@ -30,24 +33,29 @@ def user_login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
+        
         if user:
             login(request,user)
+            
             return HttpResponseRedirect(reverse('user_success'))
-
             
         else:
             context["error"] = "Provide valid credentials"
             return render(request,'quiz/login.html',context)
     else:
-        return render(request,'quiz/login.html',context)
+         return render(request,'quiz/login.html',context)
 def success(request):
     context ={}
     context['user'] = request.user
-    return render(request,'quiz/success.html',context)
+    return render(request,'quiz/success.html',context)            
 def user_logout(request):
     if request.method == "POST":
         logout(request)
-        return HttpResponseRedirect(reverse('user_login'))
+        return HttpResponseRedirect(reverse('user_login'))            
+    
+       
+
+
 
 
 def about(request):
@@ -57,19 +65,22 @@ def contact(request):
     return render(request,'quiz/contact.html')
         
 def home(request):
-    choices = Questions.CAT_CHOICES
+    choices = Question.CAT_CHOICES
     print(choices)
     return render(request,'quiz/home.html', {'choices':choices})
 
 def questions(request , choice):
     print(choice)
-    ques = Questions.objects.filter(catagory__exact = choice)
+    ques = Question.objects.filter(category__exact = choice)
     return render(request,'quiz/questions.html',{'ques':ques})
 
 def result(request):
     print("result page")
+    
     if request.method == 'POST':
+        
         data = request.POST
+        
         datas = dict(data)
         
         qid = []
@@ -85,12 +96,13 @@ def result(request):
                 print("Csrf")
         
         for q in qid:
-            ans.append((Questions.objects.get(id = q)).answer)
+            ans.append((Question.objects.get(id = q)).answer)
             print(ans)
         total = len(ans)
         for i in range(total):
             if ans[i] == qans[i]:
                 score+=1
+                
         print(score) 
             
                    
