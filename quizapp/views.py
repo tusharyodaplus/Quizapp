@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
 from django.urls import reverse
 from django.http import HttpResponseRedirect 
 from .models import Question,UserTracker,AccountData,QuizTaker,Quiz
@@ -36,8 +37,15 @@ def user_login(request):
         
         if user:
             login(request,user)
-            
+            s = SessionStore()
+            s.create()
+            a=s.session_key
+            print (a)
+            s = SessionStore(session_key='a')
+            print (s)
             return HttpResponseRedirect(reverse('user_success'))
+            if user  :
+                return HttpResponseRedirect(s)
             
         else:
             context["error"] = "Provide valid credentials"
