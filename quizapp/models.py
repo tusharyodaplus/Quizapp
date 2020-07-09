@@ -16,7 +16,7 @@ class QuizTaker(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     score= models.IntegerField(default=0)
     def __str__(self):
-        return str(self.user)    'naj599vd8g489goin9u6ytfbme54pups'
+        return str(self.user)    
 
 class Question(models.Model):
     CAT_CHOICES = (
