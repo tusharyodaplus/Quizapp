@@ -43,9 +43,10 @@ def user_login(request):
             print (a)
             s = SessionStore(session_key='a')
             print (s)
+            
             return HttpResponseRedirect(reverse('user_success'))
-            if user  :
-                return HttpResponseRedirect(s)
+
+            
             
         else:
             context["error"] = "Provide valid credentials"
@@ -88,6 +89,9 @@ def result(request):
     if request.method == 'POST':
         
         data = request.POST
+        x=UserTracker.objects.create(data.user_answer)
+        x.save()
+        print (x)
         
         datas = dict(data)
         
