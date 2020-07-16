@@ -89,9 +89,16 @@ def result(request):
     if request.method == 'POST':
         
         data = request.POST
-        x=UserTracker.objects.create(data.user_answer)
+        
+        x=UserTracker.objects.create(user_answer=data)
         x.save()
-        print (x)
+        print (x)#(update_fields=['user_answer'])
+
+       # x=UserTracker.update(user_answer=data)   
+        #x.save()
+        #print (x)
+
+        
         
         datas = dict(data)
         

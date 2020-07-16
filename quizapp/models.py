@@ -41,14 +41,14 @@ class Question(models.Model):
         return self.question
 
 class UserTracker(models.Model):
-        question = models.ForeignKey(Question,on_delete=models.CASCADE)
+        question = models.ForeignKey(Question,on_delete=models.CASCADE,null=True)
         
-        user = models.ForeignKey(User,on_delete=models.CASCADE)
+        user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
         result= models.CharField(max_length = 250)
         user_answer= models.CharField(max_length = 250)
         correct_or_incorrect = models.CharField(max_length = 100)
         def __str__(self):
-            return self.user_answer
+            return self.correct_or_incorrect
 
 
 class AccountData(models.Model):
